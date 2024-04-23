@@ -13,28 +13,16 @@
 #Goes from the middle of the grid to the top left corner then goes clockewise around to the other corners check for the princess
 #once it reaches a new corner. Assumes the bot can see the whole grid.
 def displayPathtoPrincess(n,grid):
-    #print all the moves here
-    #print(n)    #NxN grid
-    
-    #for row in range(n):
-        #print(grid[row])
-        
     cornersChecked = 4
-             #top left, top right, bot left, bot right
+             #top left, top right, bot right, bot left
     corners = [0,           0,          0,      0]
     princessFound = False
     currentRow = n // 2
     currentCol = n // 2
     
     while(princessFound == False):
-        #print(currentRow)
-        #print(currentCol)
-        #print(grid[currentRow][currentCol])
-        #print(corners)
-        
         if cornersChecked == 4:
             #At the start, go to the top left most corner
-            #print("Start")
             #Go all the way to the left
             while(currentCol > 0):
                 print("LEFT")
@@ -46,28 +34,28 @@ def displayPathtoPrincess(n,grid):
                 currentRow = currentRow - 1
             
         else:
-            #print("Non start")
-            princessFound = True
-            
+            #print("elseses")
             if corners[1] == 0:
+                #print("one")
                 #Move to the top right corner
                 while(currentCol < (n - 1)):
                     print("RIGHT")
                     currentCol = currentCol + 1
             elif corners[2] == 0:
+                #print("two")
                 #Move to the bot right corner
                 while(currentRow < (n - 1)):
                     print("DOWN")
                     currentRow = currentRow + 1
             else:
                 #Move to the bot left corner
+                #print("problem")
                 while(currentCol > 0):
                     print("LEFT")
                     currentCol = currentCol - 1
          
         
         #Check if the princess is in this corner
-        #print("Current player space: ")
         #print(currentRow)
         #print(currentCol)
         if (grid[currentRow][currentCol] == 'p'):
@@ -84,11 +72,11 @@ def displayPathtoPrincess(n,grid):
             elif (currentRow == 0 and currentCol == (n - 1)):
                 #print("top right")
                 corners[1] = 1
-            elif (currentRow == (n - 1) and currentCol == 0):
-                #print("bot left")
+            elif (currentRow == (n - 1) and currentCol == (n - 1)):
+                #print("bot right")
                 corners[2] = 1
             else:
-                #print("bot right")
+                #print("bot left")
                 corners[3] = 1
             
     
